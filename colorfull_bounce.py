@@ -17,12 +17,10 @@ class Sprite(pygame.sprite.Sprite):
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
         self.rect = self.image.get_rect()
-        self.velocity = [random.choice([-1,1])]
+        self.velocity = [random.choice([-1,1]), random.choice([-1, 1])]
     def update(self):
     
         self.rect.move_ip(self.velocity)
-
-    
         boundary_hit = False
 
 
@@ -37,8 +35,8 @@ class Sprite(pygame.sprite.Sprite):
 
         
         if boundary_hit:
-            pygame.event.post(pygame.event.event(SPRITE_COLOR_CHANGE_EVENT))
-            pygame.event.post(pygame.event.event(BACKGROUND_COLOR_CHANGE_EVENT))
+            pygame.event.post(pygame.event.Event(SPRITE_COLOR_CHANGE_EVENT))
+            pygame.event.post(pygame.event.Event(BACKGROUND_COLOR_CHANGE_EVENT))
         def change_color(self):
             self.image.fill(random.choice([YELLOW,MAGENTA,ORANGE,WHITE]))
 
